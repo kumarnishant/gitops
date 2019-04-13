@@ -8,7 +8,7 @@ data:
   my_own_secret: S3ViZXJuZXRlcyBXb3Jrcw==
 ---
 apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+kind: Deployment
 metadata:
   name: app-deployment-9
   namespace: prashant
@@ -35,12 +35,6 @@ spec:
                 secretKeyRef:
                   name: app-secret
                   key: my_own_secret
-  minReadySeconds: 30
-  revisionHistoryLimit: 3
-  strategy:
-    blueGreen: # A new field that used to provide configurable options for a BlueGreenUpdate strategy
-      previewService: app-service-preview # Reference to a service that can serve traffic to a new image before it receives the active traffic
-      activeService: app-service # Reference to a service that serves end-user traffic to the replica set
 ---
 apiVersion: v1
 kind: Service
