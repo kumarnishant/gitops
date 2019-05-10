@@ -50,7 +50,6 @@ metadata:
   name: app-service
   namespace: dont-use
 spec:
-  type: LoadBalancer
   ports:
     - name: http
       protocol: TCP
